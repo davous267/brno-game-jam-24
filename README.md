@@ -1,2 +1,4 @@
-# brno-game-jam-24
-Brno Game Jam 2024 repository
+# Brno Game Jam 2024 repository
+
+Game developed in Unity 2022.3.22f1  
+[Jam website](https://itch.io/jam/brno-game-jam-2024)
