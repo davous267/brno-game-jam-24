@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -44,7 +45,11 @@ public class Player : MonoBehaviour
     public float Energy
     {
         get => _energy;
-        set => _energy = Mathf.Clamp(value, 0f, _maxEnergy);
+        set
+        {
+            _energy = Mathf.Clamp(value, 0f, _maxEnergy);
+            _energySlider.value = _energy;
+        }
     }
 
     public float Speed
@@ -90,6 +95,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float _energyDrain = 5;
+
+    [SerializeField]
+    private Slider _energySlider;
 
     [SerializeField]
     private float _maxSpeed = 5;
