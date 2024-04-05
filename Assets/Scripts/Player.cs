@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        UpdateEnergy();
         UpdateSpeed();
     }
 
@@ -20,7 +21,31 @@ public class Player : MonoBehaviour
         Speed = _dashSpeed;
     }
 
-    public float Energy { get; private set; }
+    public void Damage(float amount)
+    {
+        if (amount >= Energy)
+        {
+            if (Energy < Mathf.Epsilon)
+            {
+                Debug.Log("Player DIED");
+                return;
+            }
+            else
+            {
+                Energy = 0;
+            }
+        }
+        else
+        {
+            Energy -= amount;
+        }
+    }
+
+    public float Energy
+    {
+        get => _energy;
+        set => _energy = Mathf.Clamp(value, 0f, _maxEnergy);
+    }
 
     public float Speed
     {
@@ -53,10 +78,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void UpdateEnergy()
+    {
+        Energy -= _energyDrain * Time.deltaTime;
+    }
+
     private float GetSpeedForCurrentEnergy() => Mathf.Lerp(_minSpeed, _maxSpeed, Energy / _maxEnergy);
 
     [SerializeField]
     private float _maxEnergy = 100;
+
+    [SerializeField]
+    private float _energyDrain = 5;
 
     [SerializeField]
     private float _maxSpeed = 5;
@@ -72,4 +105,6 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private FirstPersonMovement _firstPersonMovement;
+
+    private float _energy;
 }
