@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Escape))
+        if(Input.GetKeyUp(KeyCode.Escape)) // TODO Probably remove and replace with proper pause menu
         {
             _levelManager.LoadMainMenuScene();
         }
@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         Instance = null;
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("Player died!");
     }
 
     public static GameManager Instance { get; private set; }

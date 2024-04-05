@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         {
             if (Energy < Mathf.Epsilon)
             {
-                Debug.Log("Player DIED");
+                GameManager.Instance.GameOver();
                 return;
             }
             else
