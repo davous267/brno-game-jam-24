@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class FirstPersonMovement : MonoBehaviour
 {
+    [HideInInspector]
     public float speed = 5;
+
+    [HideInInspector]
+    public float runSpeed = 9;
 
     [Header("Running")]
     public bool canRun = true;
     public bool IsRunning { get; private set; }
-    public float runSpeed = 9;
+
     public KeyCode runningKey = KeyCode.LeftShift;
     new Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>

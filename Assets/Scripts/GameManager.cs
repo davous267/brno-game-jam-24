@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-
     private void Awake()
     {
         if(Instance == null)
@@ -32,6 +30,13 @@ public class GameManager : MonoBehaviour
         Instance = null;
     }
 
+    public static GameManager Instance { get; private set; }
+
+    public Player Player => _player;
+
     [SerializeField]
     private LevelManager _levelManager;
+
+    [SerializeField]
+    private Player _player;
 }
