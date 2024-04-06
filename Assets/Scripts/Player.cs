@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Energy = _maxEnergy;
+        _energySlider.maxValue = _maxEnergy;
     }
 
     private void Update()
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
         UpdateEnergy();
         UpdateSpeed();
         UpdatePowerUps();
+        UpdateDashIcon();
 
         if (Input.GetKeyDown(_dashKey))
         {
@@ -31,16 +33,10 @@ public class Player : MonoBehaviour
 
     public void PerformDash()
     {
-        if (Energy < DashEnergyCost)
-        {
-            return;
-        }
-
-        var currentTime = Time.time;
-        if (currentTime - _lastDashTime > _dashDelaySec)
+        if (DashAvailable)
         {
             IsDashInProgress = true;
-            _lastDashTime = currentTime;
+            _lastDashTime = Time.time;
 
             Energy -= DashEnergyCost;
             Speed = _dashSpeed;
@@ -182,6 +178,8 @@ public class Player : MonoBehaviour
         _powerUpUiManager.UpdateActivePowerUps(PowerUps);
     }
 
+    private void UpdateDashIcon() => _dashUiIcon.SetActive(DashAvailable);
+
     private float DashEnergyCost
     {
         get
@@ -196,6 +194,8 @@ public class Player : MonoBehaviour
             return dashCost;
         }
     }
+
+    private bool DashAvailable => DashEnergyCost < Energy && Time.time - _lastDashTime > _dashDelaySec;
 
     private float AttackStrength
     {
@@ -226,6 +226,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float _minSpeed = 1;
+
+    [SerializeField]
+    private GameObject _dashUiIcon;
 
     [SerializeField]
     private KeyCode _dashKey = KeyCode.LeftShift;
