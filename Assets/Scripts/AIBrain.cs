@@ -33,7 +33,7 @@ public class AIBrain : MonoBehaviour
     [SerializeField] float rotationSmooth = 5f;
     [SerializeField] float timeBetweenAttacks = 1f;
 
-    private float timeOfLastAttack = Mathf.Infinity;
+    private float timeOfLastAttack = 0f;
 
     private bool isAttacking = false;
 
@@ -139,7 +139,7 @@ public class AIBrain : MonoBehaviour
                     StateTransition(EnemyState.MovingToPlayer);
                 }
 
-                if (Time.time - timeOfLastAttack <= timeBetweenAttacks)
+                if (Time.time - timeOfLastAttack >= timeBetweenAttacks)
                 {
                     Debug.Log("attack");
                     Attack();
