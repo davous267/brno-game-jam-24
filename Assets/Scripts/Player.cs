@@ -69,7 +69,16 @@ public class Player : MonoBehaviour
 
     public void AddPowerUp(PowerUpBonus powerUp)
     {
+        var sameCategoryPowerUpIndex = _powerUps.FindIndex(x => x.Category == powerUp.Category);
+
+        if(sameCategoryPowerUpIndex >= 0)
+        {
+            _powerUps[sameCategoryPowerUpIndex].RefreshFromOther(powerUp);
+            return;
+        }
+
         _powerUps.Add(powerUp);
+        _powerUpUiManager.UpdateActivePowerUps(PowerUps);
     }
 
     public float Energy
@@ -105,7 +114,7 @@ public class Player : MonoBehaviour
             _lastAttackTime = currentTime;
             RaycastHit hit;
 
-            if (Physics.SphereCast(transform.position, _attackRaycastRadius, transform.forward, out hit, _attackDistance))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, _attackDistance))
             {
                 Debug.Log("Player attack hit: " + hit.collider.name);
 
@@ -150,7 +159,7 @@ public class Player : MonoBehaviour
 
             if (PowerUps[i].EffectDuration <= 0)
             {
-                PowerUps.RemoveAt(i);
+                RemovePowerUp(i);
             }
         }
     }
@@ -165,6 +174,12 @@ public class Player : MonoBehaviour
         }
 
         return speed;
+    }
+
+    private void RemovePowerUp(int index)
+    {
+        PowerUps.RemoveAt(index);
+        _powerUpUiManager.UpdateActivePowerUps(PowerUps);
     }
 
     private float DashEnergyCost
@@ -244,6 +259,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float _attackDelaySec = 1;
+
+    [SerializeField]
+    private PowerUpUiManager _powerUpUiManager;
 
     private List<PowerUpBonus> _powerUps = new();
 
