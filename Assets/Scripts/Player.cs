@@ -255,9 +255,6 @@ public class Player : MonoBehaviour
     private float _attackDistance = 1;
 
     [SerializeField]
-    private float _attackRaycastRadius = 1;
-
-    [SerializeField]
     private float _attackDelaySec = 1;
 
     [SerializeField]
