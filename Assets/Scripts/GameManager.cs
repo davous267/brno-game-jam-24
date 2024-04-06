@@ -17,16 +17,34 @@ public class GameManager : MonoBehaviour
         }
 
         _gameStartTime = Time.time;
+        IsGamePaused = false;
     }
 
     private void Update()
     {
-        UpdateScoreUI();   
+        if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            IsGamePaused = !IsGamePaused;
+        }
+
+        UpdateScoreUI();
     }
 
     private void OnDestroy()
     {
         Instance = null;
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        _pauseMenu.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        _pauseMenu.SetActive(false);
     }
 
     public void GameOver()
@@ -46,10 +64,29 @@ public class GameManager : MonoBehaviour
 
     public int GameplayTimeSeconds => (int)(Time.time - _gameStartTime);
 
+    private bool IsGamePaused
+    {
+        get => _pauseMenu.activeInHierarchy;
+        set
+        {
+            if(value)
+            {
+                PauseGame();
+            }
+            else
+            {
+                ResumeGame();
+            }
+        }
+    }
+
     private void UpdateScoreUI()
     {
         _scoreField.text = ScoreManager.ConvertSecondsToTimeString(GameplayTimeSeconds);
     }
+
+    [SerializeField]
+    private GameObject _pauseMenu;
 
     [SerializeField]
     private LevelManager _levelManager;
