@@ -10,6 +10,21 @@ public class LevelManager : MonoBehaviour
         LoadScene("MainMenu");
     }
 
+    public void LoadAboutScene()
+    {
+        LoadScene("About");
+    }
+
+    public void LoadGameOverScene()
+    {
+        LoadScene("GameOver");
+    }
+
+    public void LoadVictoryScene()
+    {
+        LoadScene("Victory");
+    }
+
     public void LoadGameScene()
     {
         LoadScene("Game");
