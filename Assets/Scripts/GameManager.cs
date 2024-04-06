@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
+        UpdateScoreUI();   
     }
 
     private void OnDestroy()
@@ -46,11 +46,19 @@ public class GameManager : MonoBehaviour
 
     public int GameplayTimeSeconds => (int)(Time.time - _gameStartTime);
 
+    private void UpdateScoreUI()
+    {
+        _scoreField.text = ScoreManager.ConvertSecondsToTimeString(GameplayTimeSeconds);
+    }
+
     [SerializeField]
     private LevelManager _levelManager;
 
     [SerializeField]
     private ScoreManager _scoreManager;
+
+    [SerializeField]
+    private TMPro.TMP_Text _scoreField;
 
     [SerializeField]
     private Player _player;

@@ -18,6 +18,12 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public static string ConvertSecondsToTimeString(int seconds)
+    {
+        var timespan = TimeSpan.FromSeconds(seconds);
+        return timespan.ToString(@"hh\:mm\:ss");
+    }
+
     public string GetLastScore()
     {
         if (PlayerPrefs.HasKey(_lastScoreKey))
@@ -61,12 +67,6 @@ public class ScoreManager : MonoBehaviour
     private void SetBestScore(int seconds)
     {
         PlayerPrefs.SetInt(_bestScoreKey, seconds);
-    }
-
-    private string ConvertSecondsToTimeString(int seconds)
-    {
-        var timespan = TimeSpan.FromSeconds(seconds);
-        return timespan.ToString(@"hh\:mm\:ss");
     }
 
     [SerializeField]
