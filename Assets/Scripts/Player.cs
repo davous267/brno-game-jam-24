@@ -111,19 +111,7 @@ public class Player : MonoBehaviour
             Debug.Log("Player tries to attack with strength " + AttackStrength);
             _lastAttackTime = currentTime;
             attackAnimation.SetTrigger("Attack");
-            
-            /*RaycastHit hit;
-
-            if (Physics.Raycast(transform.position, transform.forward, out hit, _attackDistance))
-            {
-                Debug.Log("Player attack hit: " + hit.collider.name);
-
-                var aiHealth = hit.collider.GetComponent<AIHealth>();
-                if (aiHealth != null)
-                {
-                    Energy += aiHealth.TakeDamage(AttackStrength);
-                }
-            }*/
+            _attackAudioSource.Play();
         }
     }
 
@@ -288,6 +276,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private Animator attackAnimation;
+
+    [SerializeField]
+    private AudioSource _attackAudioSource;
 
     private List<PowerUpBonus> _powerUps = new();
 
