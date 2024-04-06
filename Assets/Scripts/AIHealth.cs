@@ -10,6 +10,8 @@ public class AIHealth : MonoBehaviour
 
     [SerializeField] float energyGain = 20f;
     [SerializeField] VisualEffect bloodVFX;
+    [SerializeField] GameObject ribcage;
+    [SerializeField] ParticleSystem deathParticles;
 
     private void Start()
     {
@@ -34,6 +36,9 @@ public class AIHealth : MonoBehaviour
     private void Die()
     {
         GetComponent<AIBrain>().enabled = false;
+        Instantiate(ribcage, transform.position + (Vector3.up * 1.3f), Quaternion.identity);
+        deathParticles.Play();
+        Destroy(gameObject);
 
     }
 }
