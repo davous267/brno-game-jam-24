@@ -162,6 +162,11 @@ PrefabInstance:
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 8417746378620620121, guid: 01383b00ba4e95d4da2a846311d07657,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -252,6 +257,11 @@ PrefabInstance:
       propertyPath: InitialModule.startSize.scalar
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 8169976321157942775, guid: acf0ab776739b3441b7ca88617467ca1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -260,12 +270,6 @@ PrefabInstance:
 --- !u!4 &1085213987248363228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1866084442225098563, guid: acf0ab776739b3441b7ca88617467ca1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1651375991107152287}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &3351887140568085441 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4066352640161634910, guid: acf0ab776739b3441b7ca88617467ca1,
     type: 3}
   m_PrefabInstance: {fileID: 1651375991107152287}
   m_PrefabAsset: {fileID: 0}
@@ -332,6 +336,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: HumanMale_Character_FREE
       objectReference: {fileID: 0}
+    - target: {fileID: 1782702501690864755, guid: 60770bdb4dc667c45bea53db0339dc05,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2848898086878090011, guid: 60770bdb4dc667c45bea53db0339dc05,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491996513887007773, guid: 60770bdb4dc667c45bea53db0339dc05,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -361,6 +380,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7841460642979368306}
   m_SourcePrefab: {fileID: 100100000, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
+--- !u!1 &1784757874252507064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2848898086878090011, guid: 60770bdb4dc667c45bea53db0339dc05,
+    type: 3}
+  m_PrefabInstance: {fileID: 4561559712365966499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2877945405003628752 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1782702501690864755, guid: 60770bdb4dc667c45bea53db0339dc05,
@@ -427,7 +452,12 @@ MonoBehaviour:
   energyGain: 20
   bloodVFX: {fileID: 7692895829383162156}
   ribcage: {fileID: 2740046012696512965, guid: ac14abae3f52aa14a8a7b7e32f8c17de, type: 3}
-  deathParticles: {fileID: 3351887140568085441}
+  deathParticles: {fileID: 4066352640161634910, guid: acf0ab776739b3441b7ca88617467ca1,
+    type: 3}
+  gameObjectsToDisable:
+  - {fileID: 5374003499767513278}
+  - {fileID: 1784757874252507064}
+  - {fileID: 1784757874252507064}
 --- !u!136 &7841460642979368306
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -454,6 +484,12 @@ CapsuleCollider:
 --- !u!4 &3223263097204890218 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1438546959266459337, guid: 60770bdb4dc667c45bea53db0339dc05,
+    type: 3}
+  m_PrefabInstance: {fileID: 4561559712365966499}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5374003499767513278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8491996513887007773, guid: 60770bdb4dc667c45bea53db0339dc05,
     type: 3}
   m_PrefabInstance: {fileID: 4561559712365966499}
   m_PrefabAsset: {fileID: 0}
