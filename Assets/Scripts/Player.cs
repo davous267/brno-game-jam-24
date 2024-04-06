@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        _firstPersonLook.SetFreezeState(GameManager.Instance.IsGamePaused);
+
         Debug.DrawRay(transform.position, transform.forward * _attackDistance, Color.blue);
 
         UpdateEnergy();
@@ -67,7 +69,7 @@ public class Player : MonoBehaviour
     {
         var sameCategoryPowerUpIndex = _powerUps.FindIndex(x => x.Category == powerUp.Category);
 
-        if(sameCategoryPowerUpIndex >= 0)
+        if (sameCategoryPowerUpIndex >= 0)
         {
             _powerUps[sameCategoryPowerUpIndex].RefreshFromOther(powerUp);
             return;
@@ -108,7 +110,9 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Player tries to attack with strength " + AttackStrength);
             _lastAttackTime = currentTime;
-            RaycastHit hit;
+            attackAnimation.SetTrigger("Attack");
+            
+            /*RaycastHit hit;
 
             if (Physics.Raycast(transform.position, transform.forward, out hit, _attackDistance))
             {
@@ -119,6 +123,22 @@ public class Player : MonoBehaviour
                 {
                     Energy += aiHealth.TakeDamage(AttackStrength);
                 }
+            }*/
+        }
+    }
+
+    public void DealDamage()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit, _attackDistance))
+        {
+            Debug.Log("Player attack hit: " + hit.collider.name);
+
+            var aiHealth = hit.collider.GetComponent<AIHealth>();
+            if (aiHealth != null)
+            {
+                Energy += aiHealth.TakeDamage(AttackStrength);
             }
         }
     }
@@ -249,6 +269,9 @@ public class Player : MonoBehaviour
     private FirstPersonMovement _firstPersonMovement;
 
     [SerializeField]
+    private FirstPersonLook _firstPersonLook;
+
+    [SerializeField]
     private KeyCode _attackButton = KeyCode.Mouse0;
 
     [SerializeField]
@@ -262,6 +285,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private PowerUpUiManager _powerUpUiManager;
+
+    [SerializeField]
+    private Animator attackAnimation;
 
     private List<PowerUpBonus> _powerUps = new();
 

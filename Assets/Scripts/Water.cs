@@ -19,4 +19,19 @@ public class Water : MonoBehaviour
         currentYPosiiton += risingRate * Time.deltaTime;
         transform.position = new Vector3(transform.position.x, currentYPosiiton, transform.position.z);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        AIHealth aIHealth = other.GetComponentInParent<AIHealth>();
+        Player player = other.GetComponentInParent<Player>();
+        if (aIHealth != null)
+        {
+            aIHealth.TakeDamage(10000f);
+        }
+        if (player != null)
+        {
+            player.Damage(10000f);
+            player.Damage(20000f);
+        }
+    }
 }

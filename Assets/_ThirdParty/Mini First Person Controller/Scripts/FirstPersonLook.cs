@@ -19,12 +19,16 @@ public class FirstPersonLook : MonoBehaviour
 
     void Start()
     {
-        // Lock the mouse cursor to the game screen.
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked; 
     }
 
     void Update()
     {
+        if(_isFreezed)
+        {
+            return;
+        }
+
         // Get smooth velocity.
         Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         Vector2 rawFrameVelocity = Vector2.Scale(mouseDelta, Vector2.one * sensitivity);
@@ -36,4 +40,17 @@ public class FirstPersonLook : MonoBehaviour
         transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
         character.localRotation = Quaternion.AngleAxis(velocity.x, Vector3.up);
     }
+
+    public void SetFreezeState(bool state)
+    {
+        if(state == _isFreezed)
+        {
+            return;
+        }
+
+        _isFreezed = state;
+        Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+
+    private bool _isFreezed;
 }
