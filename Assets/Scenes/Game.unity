@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -428,6 +428,86 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1612659499
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4855479370628673199, guid: 4ffe570dac8d24c4bb9b0444285f6cd1,
+        type: 3}
+      propertyPath: m_Name
+      value: Score Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471869255341470270, guid: 4ffe570dac8d24c4bb9b0444285f6cd1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471869255341470270, guid: 4ffe570dac8d24c4bb9b0444285f6cd1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471869255341470270, guid: 4ffe570dac8d24c4bb9b0444285f6cd1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471869255341470270, guid: 4ffe570dac8d24c4bb9b0444285f6cd1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471869255341470270, guid: 4ffe570dac8d24c4bb9b0444285f6cd1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471869255341470270, guid: 4ffe570dac8d24c4bb9b0444285f6cd1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471869255341470270, guid: 4ffe570dac8d24c4bb9b0444285f6cd1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471869255341470270, guid: 4ffe570dac8d24c4bb9b0444285f6cd1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471869255341470270, guid: 4ffe570dac8d24c4bb9b0444285f6cd1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471869255341470270, guid: 4ffe570dac8d24c4bb9b0444285f6cd1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4ffe570dac8d24c4bb9b0444285f6cd1, type: 3}
+--- !u!114 &1612659500 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7220457698883242106, guid: 4ffe570dac8d24c4bb9b0444285f6cd1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1612659499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9af83f6a0410ba4d839c03d823746b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1707232033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -576,6 +656,11 @@ PrefabInstance:
       propertyPath: _levelManager
       value: 
       objectReference: {fileID: 1707232034}
+    - target: {fileID: 8983443061056126068, guid: 036a3e320d2253d44bac0313be09bb6e,
+        type: 3}
+      propertyPath: _scoreManager
+      value: 
+      objectReference: {fileID: 1612659500}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -585,8 +670,9 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1707232033}
   - {fileID: 573783849075129113}
+  - {fileID: 1612659499}
+  - {fileID: 1707232033}
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}

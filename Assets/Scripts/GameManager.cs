@@ -15,14 +15,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             Debug.LogError("Duplicated Game Manager instances!");
         }
+
+        _gameStartTime = Time.time;
     }
 
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Escape)) // TODO Probably remove and replace with proper pause menu
-        {
-            _levelManager.LoadMainMenuScene();
-        }
+        
     }
 
     private void OnDestroy()
@@ -32,16 +31,29 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("Player died!");
+        _levelManager.LoadGameOverScene();
+    }
+
+    public void Victory()
+    {
+        _scoreManager.SetLastScore(GameplayTimeSeconds);
+        _levelManager.LoadVictoryScene();
     }
 
     public static GameManager Instance { get; private set; }
 
     public Player Player => _player;
 
+    public int GameplayTimeSeconds => (int)(Time.time - _gameStartTime);
+
     [SerializeField]
     private LevelManager _levelManager;
 
     [SerializeField]
+    private ScoreManager _scoreManager;
+
+    [SerializeField]
     private Player _player;
+
+    private float _gameStartTime;
 }
