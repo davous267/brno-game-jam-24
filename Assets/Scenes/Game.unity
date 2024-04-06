@@ -223,18 +223,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &210591236 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5986763164361021254, guid: 1ce2e898d13acf94bb1c52315ba89b3e,
-    type: 3}
-  m_PrefabInstance: {fileID: 237478276}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec72980442fddac4d86e75ab24b4d027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &237478276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,11 +246,6 @@ PrefabInstance:
       propertyPath: _energySlider
       value: 
       objectReference: {fileID: 1891780740}
-    - target: {fileID: 7022966296422860327, guid: 1ce2e898d13acf94bb1c52315ba89b3e,
-        type: 3}
-      propertyPath: _firstPersonLook
-      value: 
-      objectReference: {fileID: 210591236}
     - target: {fileID: 7022966296422860327, guid: 1ce2e898d13acf94bb1c52315ba89b3e,
         type: 3}
       propertyPath: _powerUpUiManager
