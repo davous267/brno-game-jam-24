@@ -536,7 +536,7 @@ PrefabInstance:
     - target: {fileID: 4302631226901900385, guid: aef573d0b74d4e34ebf03fafaa102974,
         type: 3}
       propertyPath: m_text
-      value: "You died! \nWhat a looser."
+      value: "You died! \nWhat a loser."
       objectReference: {fileID: 0}
     - target: {fileID: 4302631226901900385, guid: aef573d0b74d4e34ebf03fafaa102974,
         type: 3}
