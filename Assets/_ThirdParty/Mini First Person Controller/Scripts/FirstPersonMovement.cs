@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-// David: Many of the variables below in this 3rd party script are marked as [HideInInspector]
+// David: Many of the variables below in this (modified) 3rd party script are marked as [HideInInspector]
 //        since I want to control them from Player.cs script programatically
 //        instead of defining them via Inspector (so to prevent unplanned errors).
 

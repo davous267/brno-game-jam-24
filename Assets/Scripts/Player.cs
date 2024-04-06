@@ -14,12 +14,29 @@ public class Player : MonoBehaviour
     {
         UpdateEnergy();
         UpdateSpeed();
+
+        if(Input.GetKeyDown(_dashKey))
+        {
+            PerformDash();
+        }
     }
 
     public void PerformDash()
     {
-        IsDashInProgress = true;
-        Speed = _dashSpeed;
+        if(Energy < _dashEnergyCost)
+        {
+            return;
+        }
+
+        var currentTime = Time.time;
+        if (currentTime - _lastDashTime > _dashDelaySec)
+        {
+            IsDashInProgress = true;
+            _lastDashTime = currentTime;
+
+            Energy -= _dashEnergyCost;
+            Speed = _dashSpeed;
+        }
     }
 
     public void Damage(float amount)
@@ -106,13 +123,26 @@ public class Player : MonoBehaviour
     private float _minSpeed = 1;
 
     [SerializeField]
+    private KeyCode _dashKey = KeyCode.LeftShift;
+
+    [SerializeField]
     private float _dashSpeed = 15;
 
     [SerializeField]
     private float _dashDeceleration = 30;
 
     [SerializeField]
+    private float _dashEnergyCost = 30;
+
+    [SerializeField]
+    private float _dashDelaySec = 3.0f;
+
+    [SerializeField]
     private FirstPersonMovement _firstPersonMovement;
 
+    [SerializeField]
+    private float _attackStrength = 10;
+
     private float _energy;
+    private float _lastDashTime = float.MinValue;
 }
