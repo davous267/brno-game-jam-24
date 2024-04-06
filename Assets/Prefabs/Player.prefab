@@ -241,7 +241,7 @@ Transform:
   m_GameObject: {fileID: 2647833970870631453}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -829,6 +829,7 @@ MonoBehaviour:
   _energySlider: {fileID: 0}
   _maxSpeed: 5
   _minSpeed: 1
+  _dashUiIcon: {fileID: 0}
   _dashKey: 304
   _dashSpeed: 18
   _dashDeceleration: 23
@@ -838,8 +839,8 @@ MonoBehaviour:
   _attackButton: 323
   _attackStrength: 100
   _attackDistance: 3
-  _attackRaycastRadius: 1
   _attackDelaySec: 1
+  _powerUpUiManager: {fileID: 0}
 --- !u!1 &7628860085075929637
 GameObject:
   m_ObjectHideFlags: 0
