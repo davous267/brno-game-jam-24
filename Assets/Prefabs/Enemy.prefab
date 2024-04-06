@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3293717948324181493}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.278, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -79,6 +79,7 @@ MonoBehaviour:
   rotationSmooth: 5
   timeBetweenAttacks: 1
   attackDamage: 20
+  bloodVFX: {fileID: 0}
   dungeonExit: {fileID: 0}
 --- !u!1 &6535502807499860177
 GameObject:
@@ -4910,6 +4911,90 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1001 &428265289662564410
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3223263097204890218}
+    m_Modifications:
+    - target: {fileID: 1899129667673967000, guid: 01383b00ba4e95d4da2a846311d07657,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899129667673967000, guid: 01383b00ba4e95d4da2a846311d07657,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899129667673967000, guid: 01383b00ba4e95d4da2a846311d07657,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899129667673967000, guid: 01383b00ba4e95d4da2a846311d07657,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899129667673967000, guid: 01383b00ba4e95d4da2a846311d07657,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899129667673967000, guid: 01383b00ba4e95d4da2a846311d07657,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899129667673967000, guid: 01383b00ba4e95d4da2a846311d07657,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899129667673967000, guid: 01383b00ba4e95d4da2a846311d07657,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899129667673967000, guid: 01383b00ba4e95d4da2a846311d07657,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899129667673967000, guid: 01383b00ba4e95d4da2a846311d07657,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571408068831334232, guid: 01383b00ba4e95d4da2a846311d07657,
+        type: 3}
+      propertyPath: m_Name
+      value: Blood VFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7909109368037869881, guid: 01383b00ba4e95d4da2a846311d07657,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8012791028203397398, guid: 01383b00ba4e95d4da2a846311d07657,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
+      value: 100
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 01383b00ba4e95d4da2a846311d07657, type: 3}
+--- !u!4 &2281795993658409378 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1899129667673967000, guid: 01383b00ba4e95d4da2a846311d07657,
+    type: 3}
+  m_PrefabInstance: {fileID: 428265289662564410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4561559712365966499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4975,7 +5060,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1438546959266459337, guid: 60770bdb4dc667c45bea53db0339dc05,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2281795993658409378}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1782702501690864755, guid: 60770bdb4dc667c45bea53db0339dc05,
         type: 3}
@@ -5044,6 +5133,7 @@ MonoBehaviour:
   rotationSmooth: 5
   timeBetweenAttacks: 1
   attackDamage: 20
+  bloodVFX: {fileID: 0}
   dungeonExit: {fileID: 0}
 --- !u!114 &5193712173529974686
 MonoBehaviour:
@@ -5058,6 +5148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyGain: 20
+  bloodVFX: {fileID: 0}
 --- !u!136 &7841460642979368306
 CapsuleCollider:
   m_ObjectHideFlags: 0

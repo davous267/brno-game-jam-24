@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.VFX;
+
 
 public class AIBrain : MonoBehaviour
 {
@@ -33,6 +35,7 @@ public class AIBrain : MonoBehaviour
     [SerializeField] float rotationSmooth = 5f;
     [SerializeField] float timeBetweenAttacks = 1f;
     [SerializeField] float attackDamage = 20f;
+ 
 
     private float timeOfLastAttack = 0f;
 
@@ -65,6 +68,7 @@ public class AIBrain : MonoBehaviour
 
         player = GameManager.Instance.Player;
         animator = GetComponentInChildren<Animator>();
+
     }
 
     void Update()
