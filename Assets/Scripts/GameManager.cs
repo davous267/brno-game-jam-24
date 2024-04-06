@@ -50,12 +50,14 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         _levelManager.LoadGameOverScene();
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void Victory()
     {
         _scoreManager.SetLastScore(GameplayTimeSeconds);
         _levelManager.LoadVictoryScene();
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public static GameManager Instance { get; private set; }
@@ -64,10 +66,10 @@ public class GameManager : MonoBehaviour
 
     public int GameplayTimeSeconds => (int)(Time.time - _gameStartTime);
 
-    private bool IsGamePaused
+    public bool IsGamePaused
     {
         get => _pauseMenu.activeInHierarchy;
-        set
+        private set
         {
             if(value)
             {

@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        _firstPersonLook.SetFreezeState(GameManager.Instance.IsGamePaused);
+
         Debug.DrawRay(transform.position, transform.forward * _attackDistance, Color.blue);
 
         UpdateEnergy();
@@ -247,6 +249,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private FirstPersonMovement _firstPersonMovement;
+
+    [SerializeField]
+    private FirstPersonLook _firstPersonLook;
 
     [SerializeField]
     private KeyCode _attackButton = KeyCode.Mouse0;
