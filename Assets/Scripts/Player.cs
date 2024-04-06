@@ -69,6 +69,13 @@ public class Player : MonoBehaviour
 
     public void AddPowerUp(PowerUpBonus powerUp)
     {
+        var sameCategoryPowerUpIndex = _powerUps.FindIndex(x => x.Category == powerUp.Category);
+
+        if(sameCategoryPowerUpIndex >= 0)
+        {
+            RemovePowerUp(sameCategoryPowerUpIndex);
+        }
+
         _powerUps.Add(powerUp);
     }
 
@@ -150,7 +157,7 @@ public class Player : MonoBehaviour
 
             if (PowerUps[i].EffectDuration <= 0)
             {
-                PowerUps.RemoveAt(i);
+                RemovePowerUp(i);
             }
         }
     }
@@ -165,6 +172,11 @@ public class Player : MonoBehaviour
         }
 
         return speed;
+    }
+
+    private void RemovePowerUp(int index)
+    {
+        PowerUps.RemoveAt(index);
     }
 
     private float DashEnergyCost

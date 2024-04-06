@@ -539,6 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _powerUpBonus:
+    _category: 2
     _attackBoostMultiplier: 1
     _speedBostMultiplier: 1
     _dashCostMultiplier: 0
@@ -1084,6 +1085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _powerUpBonus:
+    _category: 0
     _attackBoostMultiplier: 1.4
     _speedBostMultiplier: 1
     _dashCostMultiplier: 1
@@ -1378,6 +1380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _powerUpBonus:
+    _category: 1
     _attackBoostMultiplier: 1
     _speedBostMultiplier: 1.4
     _dashCostMultiplier: 1
