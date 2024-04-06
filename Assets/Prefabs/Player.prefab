@@ -257,7 +257,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -810,7 +810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   runSpeed: 9
-  canRun: 1
+  canRun: 0
   runningKey: 304
 --- !u!114 &7022966296422860327
 MonoBehaviour:
@@ -824,8 +824,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c43d5ddd749a84f9342ecffa250c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _energy: 100
+  _maxEnergy: 100
+  _energyDrain: 5
+  _energySlider: {fileID: 0}
+  _maxSpeed: 5
+  _minSpeed: 1
+  _dashKey: 304
+  _dashSpeed: 18
+  _dashDeceleration: 23
+  _dashEnergyCost: 30
+  _dashDelaySec: 3
   _firstPersonMovement: {fileID: 5474427679922516460}
+  _attackStrength: 10
 --- !u!1 &7628860085075929637
 GameObject:
   m_ObjectHideFlags: 0
