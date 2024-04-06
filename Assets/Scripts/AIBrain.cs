@@ -27,11 +27,26 @@ public class AIBrain : MonoBehaviour
 
     [SerializeField] float wanderingRadius = 5f;
     [SerializeField] float targetPositionTolerance = 1f;
-    Vector3 targetPosition = Vector3.zero;
+    [SerializeField] float raycastDistance = 10f;
+    [SerializeField] float chaseDistance = 10f;
+    [SerializeField] float attackDistance = 1f;
+    [SerializeField] float rotationSmooth = 5f;
+    [SerializeField] float timeBetweenAttacks = 1f;
+
+    private float timeOfLastAttack = Mathf.Infinity;
+
+    private bool isAttacking = false;
+
+    private Vector3 targetPosition = Vector3.zero;
+    private Vector3 lastWanderingPosition = Vector3.zero;
 
     [SerializeField] Transform dungeonExit;
 
+    private Player player;
+
     NavMeshAgent navMeshAgent;
+
+    Animator animator;
 
 
     void Start()
@@ -46,11 +61,21 @@ public class AIBrain : MonoBehaviour
         {
             enemyState = EnemyState.Wandering;
         }
+
+        player = GameManager.Instance.Player;
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
+        animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
         Behave();
+
+
+
+
+        //Debug.Log(enemyState);
+        //Debug.Log(targetPosition);
     }
 
     private void Behave()
@@ -58,6 +83,7 @@ public class AIBrain : MonoBehaviour
         switch (enemyState)
         {
             case EnemyState.Standing:
+                navMeshAgent.isStopped = true;
                 break;
 
             case EnemyState.Wandering: 
@@ -68,6 +94,15 @@ public class AIBrain : MonoBehaviour
                 }
 
 
+                RaycastHit hit;
+                if(Physics.Raycast(transform.position, (player.transform.position - transform.position).normalized, out hit, raycastDistance))
+                {
+                    if (hit.collider.GetComponent<Player>() != null)
+                    {
+                        lastWanderingPosition = transform.position;
+                        StateTransition(EnemyState.MovingToPlayer);
+                    }
+                }
                 break;
 
             case EnemyState.Fleeting:
@@ -75,12 +110,52 @@ public class AIBrain : MonoBehaviour
                 break;
 
             case EnemyState.MovingToPlayer:
+
+                if (Vector3.Distance(transform.position, player.transform.position) <= chaseDistance)
+                {
+                    navMeshAgent.destination = player.transform.position;
+                }
+                else
+                {
+                    StateTransition(EnemyState.ResetWandering);
+                }
+
+                if (Vector3.Distance(transform.position, player.transform.position) <= attackDistance)
+                {
+                    StateTransition(EnemyState.AttackingPlayer);
+                }
                 break;
 
             case EnemyState.AttackingPlayer:
+
+                navMeshAgent.isStopped = true;
+                Quaternion rotation = Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up);
+                Quaternion newRotation = Quaternion.Euler(0f, rotation.eulerAngles.y, 0f);
+                transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * rotationSmooth);
+
+                if (Vector3.Distance(transform.position, player.transform.position) >= attackDistance + 0.5f && isAttacking == false)
+                {
+                    navMeshAgent.isStopped = false;
+                    StateTransition(EnemyState.MovingToPlayer);
+                }
+
+                if (Time.time - timeOfLastAttack <= timeBetweenAttacks)
+                {
+                    Debug.Log("attack");
+                    Attack();
+                }
+  
                 break;
 
             case EnemyState.ResetWandering:
+
+                targetPosition = lastWanderingPosition;
+                navMeshAgent.destination = targetPosition;
+
+                if(Vector3.Distance(transform.position, targetPosition) <= targetPositionTolerance)
+                {
+                    StateTransition(EnemyState.Wandering);
+                }
                 break;  
 
             default:
@@ -97,11 +172,31 @@ public class AIBrain : MonoBehaviour
         Vector3 finalPosition = hit.position;
 
         return finalPosition;
-    }    
+    }
 
-    private void StateTransition(EnemyState currentState, EnemyState newState) 
+    private void Attack()
     {
+        timeOfLastAttack = Time.time;
+        isAttacking = true;
+        animator.SetTrigger("Attack");
+        Invoke("Hit", 0.35f);
 
+
+    }
+
+    private void Hit()
+    {
+        Debug.Log("hit");
+        if (Vector3.Distance(transform.position, player.transform.position) <= attackDistance + 0.5f)
+        {
+            //deal damage
+        }
+        isAttacking = false;
+    }
+
+    private void StateTransition(EnemyState newState) 
+    {
+        enemyState = newState;
     }
 
     private void SetDestination()
