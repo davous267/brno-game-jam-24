@@ -96,8 +96,8 @@ public class Player : MonoBehaviour
             Debug.Log("Player attack");
             _lastAttackTime = currentTime;
             RaycastHit hit;
-            
-            if(Physics.SphereCast(transform.position, _attackRaycastRadius, transform.forward, out hit, _attackDistance))
+
+            if (Physics.Raycast(transform.position, transform.forward, out hit, _attackDistance))
             {
                 Debug.Log("Player attack hit: " + hit.collider.name);
 
