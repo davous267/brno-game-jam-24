@@ -10,7 +10,9 @@ public class PowerUp : MonoBehaviour
         var player = other.GetComponent<Player>();
         if (player != null)
         {
+            _powerUpBonus.Initialize();
             player.AddPowerUp(_powerUpBonus);
+
             Destroy(gameObject);
         }
     }

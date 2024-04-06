@@ -73,10 +73,12 @@ public class Player : MonoBehaviour
 
         if(sameCategoryPowerUpIndex >= 0)
         {
-            RemovePowerUp(sameCategoryPowerUpIndex);
+            _powerUps[sameCategoryPowerUpIndex].RefreshFromOther(powerUp);
+            return;
         }
 
         _powerUps.Add(powerUp);
+        _powerUpUiManager.UpdateActivePowerUps(PowerUps);
     }
 
     public float Energy
@@ -177,6 +179,7 @@ public class Player : MonoBehaviour
     private void RemovePowerUp(int index)
     {
         PowerUps.RemoveAt(index);
+        _powerUpUiManager.UpdateActivePowerUps(PowerUps);
     }
 
     private float DashEnergyCost
@@ -256,6 +259,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float _attackDelaySec = 1;
+
+    [SerializeField]
+    private PowerUpUiManager _powerUpUiManager;
 
     private List<PowerUpBonus> _powerUps = new();
 

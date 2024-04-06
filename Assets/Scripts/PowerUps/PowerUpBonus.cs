@@ -16,6 +16,25 @@ public enum PowerUpCategory
 [System.Serializable]
 public class PowerUpBonus
 {
+    public void Initialize()
+    {
+        InitialEffectDuration = EffectDuration;
+    }
+
+    public void RefreshFromOther(PowerUpBonus other)
+    {
+        if(Category != other.Category)
+        {
+            Debug.LogError("Cannot mix power-up categories!");
+        }
+
+        _attackBoostMultiplier = other._attackBoostMultiplier;
+        _speedBostMultiplier = other._speedBostMultiplier;
+        _dashCostMultiplier = other._dashCostMultiplier;
+        _effectDuration = other._effectDuration;
+        InitialEffectDuration = other.InitialEffectDuration;
+    }
+
     public PowerUpCategory Category => _category;
 
     public float AttackBoostMultiplier => _attackBoostMultiplier;
@@ -30,7 +49,9 @@ public class PowerUpBonus
         set => _effectDuration = value;
     }
 
-    public Image UiImage => _uiImage;
+    public float InitialEffectDuration { get; private set; }
+    
+    public Sprite UiImage => _uiImage;
 
     [SerializeField]
     private PowerUpCategory _category;
@@ -48,5 +69,5 @@ public class PowerUpBonus
     private float _effectDuration = 10;
 
     [SerializeField]
-    private Image _uiImage;
+    private Sprite _uiImage;
 }
