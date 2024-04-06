@@ -835,7 +835,11 @@ MonoBehaviour:
   _dashEnergyCost: 30
   _dashDelaySec: 3
   _firstPersonMovement: {fileID: 5474427679922516460}
-  _attackStrength: 10
+  _attackButton: 323
+  _attackStrength: 100
+  _attackDistance: 3
+  _attackRaycastRadius: 1
+  _attackDelaySec: 1
 --- !u!1 &7628860085075929637
 GameObject:
   m_ObjectHideFlags: 0

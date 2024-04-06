@@ -12,12 +12,19 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        Debug.DrawRay(transform.position, transform.forward * _attackDistance, Color.blue);
+
         UpdateEnergy();
         UpdateSpeed();
 
         if(Input.GetKeyDown(_dashKey))
         {
             PerformDash();
+        }
+
+        if(Input.GetKeyDown(_attackButton))
+        {
+            TryToAttack();
         }
     }
 
@@ -81,6 +88,28 @@ public class Player : MonoBehaviour
         private set => _firstPersonMovement.IsDashingForward = value;
     }
 
+    private void TryToAttack()
+    {
+        var currentTime = Time.time;
+        if (currentTime - _lastAttackTime > _attackDelaySec)
+        {
+            Debug.Log("Player attack");
+            _lastAttackTime = currentTime;
+            RaycastHit hit;
+            
+            if(Physics.SphereCast(transform.position, _attackRaycastRadius, transform.forward, out hit, _attackDistance))
+            {
+                Debug.Log("Player attack hit: " + hit.collider.name);
+
+                var aiHealth = hit.collider.GetComponent<AIHealth>();
+                if(aiHealth != null)
+                {
+                    Energy += aiHealth.TakeDamage(_attackStrength);
+                }
+            }
+        }
+    }
+
     private void UpdateSpeed()
     {
         var energyBasedSpeed = GetSpeedForCurrentEnergy();
@@ -135,14 +164,27 @@ public class Player : MonoBehaviour
     private float _dashEnergyCost = 30;
 
     [SerializeField]
-    private float _dashDelaySec = 3.0f;
+    private float _dashDelaySec = 3;
 
     [SerializeField]
     private FirstPersonMovement _firstPersonMovement;
 
     [SerializeField]
+    private KeyCode _attackButton = KeyCode.Mouse0;
+
+    [SerializeField]
     private float _attackStrength = 10;
+
+    [SerializeField]
+    private float _attackDistance = 1;
+
+    [SerializeField]
+    private float _attackRaycastRadius = 1;
+
+    [SerializeField]
+    private float _attackDelaySec = 1;
 
     private float _energy;
     private float _lastDashTime = float.MinValue;
+    private float _lastAttackTime = float.MinValue;
 }
