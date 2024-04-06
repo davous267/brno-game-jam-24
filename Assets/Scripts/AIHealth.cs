@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class AIHealth : MonoBehaviour
 {
@@ -8,15 +9,19 @@ public class AIHealth : MonoBehaviour
     Animator animator;
 
     [SerializeField] float energyGain = 20f;
+    [SerializeField] VisualEffect bloodVFX;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();    
+        animator = GetComponent<Animator>();
+        bloodVFX = GetComponentInChildren<VisualEffect>();
     }
 
     public float TakeDamage(float damage)
     {
         healthPoints -= damage;
+        bloodVFX.SetVector3("World Position", transform.position + (Vector3.up * 1.5f));
+        bloodVFX.Play();
         animator.SetTrigger("IsHit");
         if (healthPoints <= 0)
         {
