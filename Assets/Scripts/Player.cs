@@ -16,13 +16,14 @@ public class Player : MonoBehaviour
 
         UpdateEnergy();
         UpdateSpeed();
+        UpdatePowerUps();
 
-        if(Input.GetKeyDown(_dashKey))
+        if (Input.GetKeyDown(_dashKey))
         {
             PerformDash();
         }
 
-        if(Input.GetKeyDown(_attackButton))
+        if (Input.GetKeyDown(_attackButton))
         {
             TryToAttack();
         }
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour
 
     public void PerformDash()
     {
-        if(Energy < _dashEnergyCost)
+        if (Energy < DashEnergyCost)
         {
             return;
         }
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
             IsDashInProgress = true;
             _lastDashTime = currentTime;
 
-            Energy -= _dashEnergyCost;
+            Energy -= DashEnergyCost;
             Speed = _dashSpeed;
         }
     }
@@ -66,6 +67,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void AddPowerUp(PowerUpBonus powerUp)
+    {
+        _powerUps.Add(powerUp);
+    }
+
     public float Energy
     {
         get => _energy;
@@ -88,23 +94,25 @@ public class Player : MonoBehaviour
         private set => _firstPersonMovement.IsDashingForward = value;
     }
 
+    public List<PowerUpBonus> PowerUps => _powerUps;
+
     private void TryToAttack()
     {
         var currentTime = Time.time;
         if (currentTime - _lastAttackTime > _attackDelaySec)
         {
-            Debug.Log("Player attack");
+            Debug.Log("Player tries to attack with strength " + AttackStrength);
             _lastAttackTime = currentTime;
             RaycastHit hit;
-            
-            if(Physics.SphereCast(transform.position, _attackRaycastRadius, transform.forward, out hit, _attackDistance))
+
+            if (Physics.SphereCast(transform.position, _attackRaycastRadius, transform.forward, out hit, _attackDistance))
             {
                 Debug.Log("Player attack hit: " + hit.collider.name);
 
                 var aiHealth = hit.collider.GetComponent<AIHealth>();
-                if(aiHealth != null)
+                if (aiHealth != null)
                 {
-                    Energy += aiHealth.TakeDamage(_attackStrength);
+                    Energy += aiHealth.TakeDamage(AttackStrength);
                 }
             }
         }
@@ -117,8 +125,8 @@ public class Player : MonoBehaviour
         if (IsDashInProgress)
         {
             Speed = Mathf.Max(energyBasedSpeed, Speed - _dashDeceleration * Time.deltaTime);
-            
-            if(Speed <= energyBasedSpeed)
+
+            if (Speed <= energyBasedSpeed)
             {
                 IsDashInProgress = false;
             }
@@ -134,7 +142,60 @@ public class Player : MonoBehaviour
         Energy -= _energyDrain * Time.deltaTime;
     }
 
-    private float GetSpeedForCurrentEnergy() => Mathf.Lerp(_minSpeed, _maxSpeed, Energy / _maxEnergy);
+    private void UpdatePowerUps()
+    {
+        for (int i = PowerUps.Count - 1; i >= 0; --i)
+        {
+            PowerUps[i].EffectDuration -= Time.deltaTime;
+
+            if (PowerUps[i].EffectDuration <= 0)
+            {
+                PowerUps.RemoveAt(i);
+            }
+        }
+    }
+
+    private float GetSpeedForCurrentEnergy()
+    {
+        var speed = Mathf.Lerp(_minSpeed, _maxSpeed, Energy / _maxEnergy);
+
+        foreach (var powerUp in PowerUps)
+        {
+            speed *= powerUp.SpeedBoostMultiplier;
+        }
+
+        return speed;
+    }
+
+    private float DashEnergyCost
+    {
+        get
+        {
+            var dashCost = _dashEnergyCost;
+
+            foreach (var powerUp in PowerUps)
+            {
+                dashCost *= powerUp.DashCostMultiplier;
+            }
+
+            return dashCost;
+        }
+    }
+
+    private float AttackStrength
+    {
+        get
+        {
+            var attack = _attackStrength;
+
+            foreach (var powerUp in PowerUps)
+            {
+                attack *= powerUp.AttackBoostMultiplier;
+            }
+
+            return attack;
+        }
+    }
 
     [SerializeField]
     private float _maxEnergy = 100;
@@ -183,6 +244,8 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float _attackDelaySec = 1;
+
+    private List<PowerUpBonus> _powerUps = new();
 
     private float _energy;
     private float _lastDashTime = float.MinValue;
