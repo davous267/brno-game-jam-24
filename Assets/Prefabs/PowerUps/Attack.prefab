@@ -83,7 +83,7 @@ PrefabInstance:
     - target: {fileID: 8309822466864148879, guid: 22f65a1570e309142b53f0402840ce2d,
         type: 3}
       propertyPath: _powerUpBonus._effectDuration
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8309822466864148879, guid: 22f65a1570e309142b53f0402840ce2d,
         type: 3}
