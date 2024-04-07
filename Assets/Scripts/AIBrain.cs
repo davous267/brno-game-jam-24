@@ -239,7 +239,7 @@ public class AIBrain : MonoBehaviour
 
     private void Hit()
     {
-        if (health.isDead)
+        if (!health.isDead)
         {
             Debug.Log("hit");
             if (Vector3.Distance(transform.position, player.transform.position) <= attackDistance + 0.5f)
