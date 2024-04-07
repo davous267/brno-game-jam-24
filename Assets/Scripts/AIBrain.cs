@@ -35,6 +35,8 @@ public class AIBrain : MonoBehaviour
     [SerializeField] float rotationSmooth = 5f;
     [SerializeField] float timeBetweenAttacks = 1f;
     [SerializeField] float attackDamage = 20f;
+
+    [SerializeField] AudioSource punchAudioSource;
  
 
     private float timeOfLastAttack = 0f;
@@ -242,6 +244,7 @@ public class AIBrain : MonoBehaviour
         if (!health.isDead)
         {
             Debug.Log("hit");
+            punchAudioSource.Play();
             if (Vector3.Distance(transform.position, player.transform.position) <= attackDistance + 0.5f)
             {
                 GameManager.Instance.Player.Damage(attackDamage);

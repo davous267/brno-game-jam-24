@@ -13,6 +13,7 @@ public class AIHealth : MonoBehaviour
     [SerializeField] VisualEffect bloodVFX;
     [SerializeField] GameObject ribcage;
     [SerializeField] ParticleSystem deathParticles;
+    [SerializeField] AudioSource dieAudio;
 
     public bool isDead = false;
 
@@ -41,6 +42,7 @@ public class AIHealth : MonoBehaviour
     private void Die()
     {
         isDead = true;
+        dieAudio.Play();
         GetComponent<AIBrain>().enabled = false;
         GetComponentInParent<Collider>().enabled = false;
         GetComponentInParent<NavMeshAgent>().enabled = false;
