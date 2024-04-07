@@ -69,6 +69,8 @@ public class Player : MonoBehaviour
     {
         var sameCategoryPowerUpIndex = _powerUps.FindIndex(x => x.Category == powerUp.Category);
 
+        _pickupAudioSource.Play();
+
         if (sameCategoryPowerUpIndex >= 0)
         {
             _powerUps[sameCategoryPowerUpIndex].RefreshFromOther(powerUp);
@@ -279,6 +281,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private AudioSource _attackAudioSource;
+
+    [SerializeField]
+    private AudioSource _pickupAudioSource;
 
     private List<PowerUpBonus> _powerUps = new();
 
