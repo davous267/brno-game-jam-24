@@ -247,6 +247,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4627086200578660434}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6487002081071618892
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7401440636608977746}
+    m_Modifications:
+    - target: {fileID: 6954514353159711411, guid: ee03c377f23917842b67a0c460391a85,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy Audio Sources
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897245800715970409, guid: ee03c377f23917842b67a0c460391a85,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.029642105
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897245800715970409, guid: ee03c377f23917842b67a0c460391a85,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.97544414
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897245800715970409, guid: ee03c377f23917842b67a0c460391a85,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.054481506
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897245800715970409, guid: ee03c377f23917842b67a0c460391a85,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897245800715970409, guid: ee03c377f23917842b67a0c460391a85,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897245800715970409, guid: ee03c377f23917842b67a0c460391a85,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897245800715970409, guid: ee03c377f23917842b67a0c460391a85,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897245800715970409, guid: ee03c377f23917842b67a0c460391a85,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897245800715970409, guid: ee03c377f23917842b67a0c460391a85,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897245800715970409, guid: ee03c377f23917842b67a0c460391a85,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee03c377f23917842b67a0c460391a85, type: 3}
+--- !u!82 &2126867065009060385 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5152769255525704045, guid: ee03c377f23917842b67a0c460391a85,
+    type: 3}
+  m_PrefabInstance: {fileID: 6487002081071618892}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4007870736267000869 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7897245800715970409, guid: ee03c377f23917842b67a0c460391a85,
+    type: 3}
+  m_PrefabInstance: {fileID: 6487002081071618892}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &5662792034026657064 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1481738564758425188, guid: ee03c377f23917842b67a0c460391a85,
+    type: 3}
+  m_PrefabInstance: {fileID: 6487002081071618892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7006908835164421305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -325,6 +411,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 9130871605368561183}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d26c9849762b9c24ead75941a8c1c87d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4007870736267000869}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d26c9849762b9c24ead75941a8c1c87d,
         type: 3}
@@ -405,6 +495,7 @@ MonoBehaviour:
   rotationSmooth: 5
   timeBetweenAttacks: 1
   attackDamage: 20
+  punchAudioSource: {fileID: 5662792034026657064}
   dungeonExit: {fileID: 0}
 --- !u!114 &6549406325112631494
 MonoBehaviour:
@@ -422,6 +513,7 @@ MonoBehaviour:
   bloodVFX: {fileID: 8989562527545100664}
   ribcage: {fileID: 2740046012696512965, guid: ac14abae3f52aa14a8a7b7e32f8c17de, type: 3}
   deathParticles: {fileID: 5652287409975911373}
+  dieAudio: {fileID: 2126867065009060385}
   isDead: 0
   gameObjectsToDisable:
   - {fileID: 42832622969454982}

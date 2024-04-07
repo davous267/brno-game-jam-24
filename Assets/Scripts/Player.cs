@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
 
     public void Damage(float amount)
     {
+        _getHitAudioSource.Play();
         if (amount >= Energy)
         {
             if (Energy < Mathf.Epsilon)
@@ -284,6 +285,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private AudioSource _pickupAudioSource;
+
+    [SerializeField]
+    private AudioSource _getHitAudioSource;
 
     private List<PowerUpBonus> _powerUps = new();
 
