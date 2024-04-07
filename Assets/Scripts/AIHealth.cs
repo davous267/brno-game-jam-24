@@ -14,6 +14,8 @@ public class AIHealth : MonoBehaviour
     [SerializeField] GameObject ribcage;
     [SerializeField] ParticleSystem deathParticles;
 
+    public bool isDead = false;
+
     [SerializeField] List<GameObject> gameObjectsToDisable;
 
     private void Start()
@@ -38,6 +40,7 @@ public class AIHealth : MonoBehaviour
 
     private void Die()
     {
+        isDead = true;
         GetComponent<AIBrain>().enabled = false;
         GetComponentInParent<Collider>().enabled = false;
         GetComponentInParent<NavMeshAgent>().enabled = false;

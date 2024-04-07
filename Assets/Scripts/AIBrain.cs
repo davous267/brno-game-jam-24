@@ -47,6 +47,7 @@ public class AIBrain : MonoBehaviour
     [SerializeField] Transform dungeonExit;
 
     private Player player;
+    private AIHealth health;
 
     NavMeshAgent navMeshAgent;
 
@@ -68,6 +69,7 @@ public class AIBrain : MonoBehaviour
 
         player = GameManager.Instance.Player;
         animator = GetComponentInChildren<Animator>();
+        health = GetComponent<AIHealth>();
 
     }
 
@@ -185,13 +187,27 @@ public class AIBrain : MonoBehaviour
 
     private Vector3 ChooseRandomPosition()
     {
-        Vector3 randomDirection = Random.insideUnitSphere * wanderingRadius;
-        randomDirection += transform.position;
-        NavMeshHit hit;
-        NavMesh.SamplePosition(randomDirection, out hit, wanderingRadius, 1);
-        Vector3 finalPosition = hit.position;
 
-        return finalPosition;
+        for (int i = 0; i < 10; i++ )
+        {
+            Vector3 randomDirection = Random.insideUnitSphere * wanderingRadius;
+            randomDirection += transform.position;
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomDirection, out hit, wanderingRadius, 1);
+            Vector3 finalPosition = hit.position;
+
+            NavMeshPath path = new NavMeshPath();
+
+            if (NavMesh.CalculatePath(transform.position, finalPosition, NavMesh.AllAreas, path))
+            {
+                if (path.status == NavMeshPathStatus.PathComplete)
+                {
+                    return finalPosition;
+                }
+            }
+        }
+
+        return transform.position;
     }
 
     private void Attack()
@@ -223,10 +239,13 @@ public class AIBrain : MonoBehaviour
 
     private void Hit()
     {
-        Debug.Log("hit");
-        if (Vector3.Distance(transform.position, player.transform.position) <= attackDistance + 0.5f)
+        if (health.isDead)
         {
-            GameManager.Instance.Player.Damage(attackDamage);
+            Debug.Log("hit");
+            if (Vector3.Distance(transform.position, player.transform.position) <= attackDistance + 0.5f)
+            {
+                GameManager.Instance.Player.Damage(attackDamage);
+            }
         }
         isAttacking = false;
     }
