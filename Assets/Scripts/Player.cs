@@ -205,7 +205,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private bool DashAvailable => DashEnergyCost < Energy && Time.time - _lastDashTime > _dashDelaySec;
+    private bool DashAvailable => DashEnergyCost <= Energy && Time.time - _lastDashTime > _dashDelaySec;
 
     private float AttackStrength
     {
