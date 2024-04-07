@@ -9390,6 +9390,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5588382116467541252, guid: 1ce2e898d13acf94bb1c52315ba89b3e,
         type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588382116467541252, guid: 1ce2e898d13acf94bb1c52315ba89b3e,
+        type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -9411,7 +9416,7 @@ PrefabInstance:
     - target: {fileID: 7022966296422860327, guid: 1ce2e898d13acf94bb1c52315ba89b3e,
         type: 3}
       propertyPath: _energyDrain
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7022966296422860327, guid: 1ce2e898d13acf94bb1c52315ba89b3e,
         type: 3}
@@ -41534,7 +41539,7 @@ PrefabInstance:
     - target: {fileID: 3282192244321837885, guid: 1810cdcfe1478dd41adf79651fafc17e,
         type: 3}
       propertyPath: risingRatePerMinute
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3999620278856288733, guid: 1810cdcfe1478dd41adf79651fafc17e,
         type: 3}

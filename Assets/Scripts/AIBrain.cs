@@ -69,6 +69,7 @@ public class AIBrain : MonoBehaviour
             enemyState = EnemyState.Wandering;
         }
 
+        //StartCoroutine(FindPlayer());
         player = GameManager.Instance.Player;
         animator = GetComponentInChildren<Animator>();
         health = GetComponent<AIHealth>();
@@ -77,6 +78,11 @@ public class AIBrain : MonoBehaviour
 
     void Update()
     {
+        if(player == null)
+        {
+            Debug.Log("cant find player");
+            player = GameManager.Instance.Player;
+        }
         animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
         Behave();
 
@@ -85,6 +91,12 @@ public class AIBrain : MonoBehaviour
 
         //Debug.Log(enemyState);
         //Debug.Log(targetPosition);
+    }
+
+    IEnumerator FindPlayer()
+    {
+        yield return null;
+        player = GameManager.Instance.Player;
     }
 
     private void Behave()
@@ -220,8 +232,9 @@ public class AIBrain : MonoBehaviour
 
     private bool IsPlayerInSight()
     {
+        Debug.DrawRay(transform.position + Vector3.up, (player.transform.position - transform.position).normalized * raycastDistance, Color.blue);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, (player.transform.position - transform.position).normalized, out hit, raycastDistance))
+        if (Physics.Raycast(transform.position + Vector3.up, ((player.transform.position - Vector3.up) - transform.position).normalized, out hit, raycastDistance))
         {
             if (hit.collider.GetComponent<Player>() != null)
             {
