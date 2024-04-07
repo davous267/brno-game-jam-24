@@ -112,20 +112,16 @@ public class AIBrain : MonoBehaviour
                     StateTransition(EnemyState.MovingToPlayer);
                 }
 
-                /*RaycastHit hit;
-                if(Physics.Raycast(transform.position, (player.transform.position - transform.position).normalized, out hit, raycastDistance))
-                {
-                    if (hit.collider.GetComponent<Player>() != null)
-                    {
-                        lastWanderingPosition = transform.position;
-                        StateTransition(EnemyState.MovingToPlayer);
-                    }
-                }*/
                 break;
 
             case EnemyState.Fleeting:
                 navMeshAgent.destination = dungeonExit.position;
                 navMeshAgent.isStopped = false;
+
+                if (Vector3.Distance(transform.position, dungeonExit.position) <= 1f)
+                {
+                    Destroy(gameObject);
+                }
                 break;
 
             case EnemyState.MovingToPlayer:

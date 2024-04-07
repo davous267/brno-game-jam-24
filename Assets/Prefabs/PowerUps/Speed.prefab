@@ -221,5 +221,5 @@ MonoBehaviour:
     _attackBoostMultiplier: 1
     _speedBostMultiplier: 1.4
     _dashCostMultiplier: 1
-    _effectDuration: 10
+    _effectDuration: 5
     _uiImage: {fileID: 21300000, guid: e4f7b8161658bab4084d68e03ea74bac, type: 3}

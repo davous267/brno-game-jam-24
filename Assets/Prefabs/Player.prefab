@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8422006203040243149}
   - component: {fileID: 2350845408283658209}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GetHit Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 8947362918702365256}
   - component: {fileID: 4784760492977137135}
   - component: {fileID: 7524649731347122607}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 679759655204075377}
   - component: {fileID: 1967655170246890373}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Step Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 7400524048144888413}
   - component: {fileID: 5986763164361021254}
   - component: {fileID: 1143993825695443049}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: First Person Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5294674969222221299}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1054455332787401096}
   - component: {fileID: 2797969747501063479}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Running Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,7 +672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6464074970966103542}
   - component: {fileID: 3377100110045561085}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Landing Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -800,7 +800,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6588540725352164468}
   - component: {fileID: 2945971800292211135}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pickup Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -928,7 +928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4661685813641455940}
   - component: {fileID: 4396792379113690139}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -977,7 +977,7 @@ GameObject:
   - component: {fileID: 7717500690219370245}
   - component: {fileID: 5474427679922516460}
   - component: {fileID: 7022966296422860327}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1085,8 +1085,8 @@ MonoBehaviour:
   _maxEnergy: 100
   _energyDrain: 5
   _energySlider: {fileID: 0}
-  _maxSpeed: 5
-  _minSpeed: 1
+  _maxSpeed: 6
+  _minSpeed: 3
   _dashUiIcon: {fileID: 0}
   _dashKey: 304
   _dashSpeed: 18
@@ -1114,7 +1114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7916300696185819046}
   - component: {fileID: 7179898479278365619}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: First Person Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1192,7 +1192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8776362850901190891}
   - component: {fileID: 4246019577263645680}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Attack Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1336,7 +1336,7 @@ Transform:
   m_GameObject: {fileID: 8894649548731356215}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.344, z: 0}
+  m_LocalPosition: {x: 0, y: 0.503, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1421,10 +1421,60 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7447239833946419102, guid: 4f682888a7300d443bd530197026494d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -3572420598491972491, guid: 4f682888a7300d443bd530197026494d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -3199106345726190174, guid: 4f682888a7300d443bd530197026494d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -1763802614064723440, guid: 4f682888a7300d443bd530197026494d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -1554902429417029239, guid: 4f682888a7300d443bd530197026494d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4f682888a7300d443bd530197026494d,
         type: 3}
       propertyPath: m_Name
       value: DrakViewModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4f682888a7300d443bd530197026494d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: 4f682888a7300d443bd530197026494d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607028435283897975, guid: 4f682888a7300d443bd530197026494d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8883213945734227979, guid: 4f682888a7300d443bd530197026494d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9114772898675105519, guid: 4f682888a7300d443bd530197026494d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

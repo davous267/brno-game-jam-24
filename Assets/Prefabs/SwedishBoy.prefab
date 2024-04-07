@@ -18,6 +18,11 @@ PrefabInstance:
       propertyPath: enemyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 795371954359832407, guid: fe311e2e11de60a4c970f12fba1d5c54,
+        type: 3}
+      propertyPath: punchAudioSource
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2385828543133801044, guid: fe311e2e11de60a4c970f12fba1d5c54,
         type: 3}
       propertyPath: m_IsActive
@@ -301,7 +306,7 @@ PrefabInstance:
     - target: {fileID: 4504137540569908813, guid: 242d18434ec0f76468d9c73dc8c74a7d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.365
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 4504137540569908813, guid: 242d18434ec0f76468d9c73dc8c74a7d,
         type: 3}
@@ -417,6 +422,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwedenBoy
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 1dfedc74ab3eb974b9c73d0b9c4b00f8,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b857d2e024f1ac04f977d258b69c623d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -508,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93cd30df4b79244488096d5cde2c6c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 1
+  enemyType: 0
   enemyState: 0
   wanderingRadius: 5
   targetPositionTolerance: 1
@@ -532,6 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa6452c453f4144397f281df60bd647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 100
   energyGain: 20
   bloodVFX: {fileID: 8331288273901315508}
   ribcage: {fileID: 2740046012696512965, guid: ac14abae3f52aa14a8a7b7e32f8c17de, type: 3}
