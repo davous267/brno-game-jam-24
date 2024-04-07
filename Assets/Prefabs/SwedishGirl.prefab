@@ -194,7 +194,7 @@ PrefabInstance:
     - target: {fileID: 4504137540569908813, guid: 242d18434ec0f76468d9c73dc8c74a7d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.365
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 4504137540569908813, guid: 242d18434ec0f76468d9c73dc8c74a7d,
         type: 3}
@@ -509,6 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa6452c453f4144397f281df60bd647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 100
   energyGain: 20
   bloodVFX: {fileID: 8989562527545100664}
   ribcage: {fileID: 2740046012696512965, guid: ac14abae3f52aa14a8a7b7e32f8c17de, type: 3}

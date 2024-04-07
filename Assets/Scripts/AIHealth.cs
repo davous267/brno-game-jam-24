@@ -6,7 +6,7 @@ using UnityEngine.VFX;
 
 public class AIHealth : MonoBehaviour
 {
-    private float healthPoints = 100f;
+    [SerializeField] float healthPoints = 100f;
     Animator animator;
 
     [SerializeField] float energyGain = 20f;

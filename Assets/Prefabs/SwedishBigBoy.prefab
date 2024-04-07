@@ -82,6 +82,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1001229471436690899, guid: f27c1d6984935cc418311126d6b09f04,
+        type: 3}
+      propertyPath: punchAudioSource
+      value: 
+      objectReference: {fileID: 3709394128033710354}
     - target: {fileID: 2877945405003628752, guid: f27c1d6984935cc418311126d6b09f04,
         type: 3}
       propertyPath: m_IsActive
@@ -574,7 +579,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa6452c453f4144397f281df60bd647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyGain: 20
+  healthPoints: 200
+  energyGain: 40
   bloodVFX: {fileID: 3956083077677550076}
   ribcage: {fileID: 2740046012696512965, guid: ac14abae3f52aa14a8a7b7e32f8c17de, type: 3}
   deathParticles: {fileID: 7964518137636639880}

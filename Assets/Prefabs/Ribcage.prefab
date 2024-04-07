@@ -58,10 +58,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2378248958019570526, guid: ed98e4d1793aa4447b1a29f454220122,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -732186272514022480, guid: ed98e4d1793aa4447b1a29f454220122,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ed98e4d1793aa4447b1a29f454220122,
         type: 3}
       propertyPath: m_Name
       value: Ribcage
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ed98e4d1793aa4447b1a29f454220122,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607722699587004229, guid: ed98e4d1793aa4447b1a29f454220122,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
